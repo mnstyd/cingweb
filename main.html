@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\], initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap.bundle.js">
+    <link rel="stylesheet" href="jquery.js">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <style>
+        body {
+            background-color: khaki;
+        }
+
+        .navbar-brand {
+            margin: 0;
+            padding: 0;
+            opacity: 100;
+            padding-left: 200px;
+        }
+
+        .navbar-nav {
+            padding-right: 200px;
+        }
+
+        .nav-link {
+            font-weight: 600;
+        }
+
+        .logo {
+            height: 40px;
+            padding-right: 15px;
+            padding-left: 30px;
+        }
+
+        .navbar-nav>li {
+            padding-left: 30px;
+            padding-right: 30px;
+            font-family: 'ClashDisplay-Medium';
+        }
+
+        .navbar-nav .nav-link {
+            position: relative;
+        }
+
+        .navbar-nav .nav-link::after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            content: "";
+            background-color: #ffffff;
+            width: 0%;
+            height: 2px;
+            transition: all .3s ease-in-out;
+            opacity: 50%;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        @media screen and (min-width:992px) {
+            .navbar {
+                position: absolute;
+                top: 0;
+                z-index: 10;
+                background: white;
+                opacity: 1;
+                width: 100%;
+                padding: 0;
+            }
+
+        }
+
+        @font-face {
+            font-family: 'ClashDisplay-Bold';
+            src: url('../fonts/ClashDisplay-Bold.woff2') format('woff2'),
+                url('../fonts/ClashDisplay-Bold.woff') format('woff'),
+                url('/assets/Fonts/WEB/fonts/ClashDisplay-Bold.ttf') format('truetype');
+            font-weight: 700;
+            font-display: swap;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'ClashDisplay-Medium';
+            src: url('../fonts/ClashDisplay-Medium.woff2') format('woff2'),
+                url('../fonts/ClashDisplay-Medium.woff') format('woff'),
+                url('/assets/Fonts/WEB/fonts/ClashDisplay-Medium.ttf') format('truetype');
+            font-weight: 500;
+            font-display: swap;
+            font-style: normal;
+        }
+
+
+        .col {
+            display: grid;
+
+        }
+
+        .card {
+            width: 270px;
+            cursor: pointer;
+            transition: 0.3s linear;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+
+        .card img {
+            width: 100%;
+            height: 15vw;
+            object-fit: cover;
+        }
+
+        .hi {
+            margin: 0 auto;
+        }
+
+        .box {
+            margin: 0 auto;
+            background-image: url(images/bg.png);
+            padding: 20px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: center;
+            max-width: fit-content;
+        }
+
+        .ourwork {
+            color: white;
+        }
+
+        .gridkeren {
+            max-width: 200px;
+            max-height: 200px;
+            display: inline;
+        }
+
+        .gimana {
+            width: 200px;
+        }
+
+        .sc {
+            padding-left: 40px;
+            padding-right: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .scc {
+            margin: auto;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 4px;
+        }
+
+        .column {
+            flex: 25%;
+            min-width: 25%;
+            padding: 0 4px;
+        }
+
+        @media screen and (max-width: 800px) {
+            .column {
+                flex: 50%;
+                max-width: 50%;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .column {
+                flex: 100%;
+                max-width: 100%;
+            }
+
+            .column img {
+                filter: grayscale(0) brightness(1);
+            }
+        }
+
+        /* .container-fluid {
+            max-width: 1200px;
+        }*/
+
+        #carouselExampleIndicators {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .carousel-item {
+            max-height: 700px;
+        }
+
+        .carousel {
+            padding-bottom: 0px;
+        }
+
+        .text-dark {
+            text-decoration: none;
+        }
+
+        .col.bi {
+            min-width: 20px;
+            font-size: large;
+            align-content: center;
+        }
+
+        .textcard {
+            text-align: center;
+        }
+
+        .bi-award-fill:hover {
+            color: #FFD700;
+        }
+
+        .menus {
+            height: 500px;
+        }
+
+        .product-div {
+            background-color: #E8EBFF;
+        }
+
+        .product {
+            display: flex;
+            padding-left: 5%;
+            padding-right: 5%;
+            justify-content: space-between;
+        }
+
+        .product-text {
+            max-width: 450px;
+            font-style: bold;
+        }
+
+        .illu1 {
+            transition: 0.3s linear;
+            max-width: 50%;
+        }
+
+        .illu1:hover {
+            transform: scale(1.05);
+        }
+
+        .cing-mobile {
+            max-width: 100%;
+            border-radius: 30px;
+            flex-basis: 30%;
+            object-fit: contain;
+        }
+
+        .product1-title {
+            font-size: 300%;
+            font-family: 'ClashDisplay-Bold';
+        }
+
+        .product1-paragraph {
+            font-family: 'ClashDisplay-Medium';
+        }
+
+        .team {
+            background-color: #FFFFFF;
+        }
+
+        .teamname {
+            margin: auto;
+            align-self: center;
+            text-align: center;
+            padding-left: 10%;
+            padding-right: 10%;
+            padding-top: 0px;
+        }
+
+        .team img {
+            max-width: 80%;
+            margin-bottom: 10%;
+        }
+
+        .team h1 {
+            font-size: 300%;
+            color: #23272A;
+            font-family: 'ClashDisplay-Bold';
+            display: block
+        }
+
+        .team h2 {
+            color: #23272A;
+            font-family: 'ClashDisplay-Bold';
+            display: block;
+        }
+
+        .team h3 {
+            color: #23272A;
+            font-family: 'ClashDisplay-Medium';
+            display: block;
+            font-size: 130%;
+            margin-bottom: 5%;
+        }
+
+        .team p {
+            display: block;
+            margin: auto;
+            color: #23272A;
+            font-family: 'ClashDisplay-Medium';
+            max-width: 500px;
+        }
+
+        .news {
+            background-color: #E8EBFF;
+        }
+
+        .ideasc {
+            background-color: #E8EBFF;
+        }
+
+        .ideasc h1 {
+            font-size: 300%;
+            color: #23272A;
+            font-family: 'ClashDisplay-Bold';
+            display: block
+        }
+
+        .ideasc p {
+            display: block;
+            margin: auto;
+            color: #23272A;
+            font-family: 'ClashDisplay-Medium';
+            max-width: 70%;
+            font-size: 120%;
+        }
+
+        .ideasc-tl {
+            margin: auto;
+            padding-bottom: 4%;
+        }
+
+        .ideasc-p {
+            margin: auto;
+            text-align: center;
+        }
+
+        .transition1 {
+            width: 100%;
+            object-fit: cover;
+            min-width: 100%;
+            position: relative;
+
+        }
+
+        .teamtl {
+            position: absolute;
+            padding-top: 11%;
+        }
+
+        .teamtl-div {
+            display: inline-block;
+            padding-bottom: 0px;
+        }
+
+        .ideatl {
+            position: absolute;
+            padding-top: 11%;
+        }
+
+
+
+
+        /*.bi-command:hover {
+            color: #fe828c;
+        }
+        .bi-github:hover {
+            color: #fe828c;
+        }
+        
+        .bi-envelope-fill:hover {
+            color: #fe828c;
+        }*/
+    </style>
+</head>
+<script>
+    $(document).ready(function () {
+        $('.popup-with-zoom-anim').magnificPopup({
+            type: 'inline',
+            fixedContentPos: false,
+            fixedBgPos: true,
+            overflowY: 'auto',
+            closeBtnInside: true,
+            preloader: false,
+            midClick: true,
+            removalDelay: 300,
+            mainClass: 'my-mfp-zoom-in'
+        });
+    });
+
+    var elements = document.getElementsByClassName("column");
+
+    var i;
+
+    function one() {
+        for (i = 0; i < elements.length; i++) {
+            elements[i].style.flex = "100%";
+        }
+    }
+
+    function two() {
+        for (i = 0; i < elements.length; i++) {
+            elements[i].style.flex = "50%";
+        }
+    }
+
+    function four() {
+        for (i = 0; i < elements.length; i++) {
+            elements[i].style.flex = "25%";
+        }
+    }
+
+    ScrollReveal().reveal('.team', { delay: 500 });
+
+</script>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent p-4">
+        <a class="navbar-brand" href="#"><img src="assets/logo/cing-logo.png" class="img-responsive logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        HOME
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#team">
+                        TEAM
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">
+                        COMPANY
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://discord.gg/VgMpXPhRkq">
+                        DOWNLOADS
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="assets/images/Background.png" class="d-block w-100" alt="...">
+                <!-- <div class="carousel-caption d-none d-md-block">
+                    <h5>Digital Payment Made Easier</h5>
+                    <p>Libero! Itaque qui, animi voluptatum ex expedita numquam alias nisi cupiditate est quis.</p>
+                </div> -->
+            </div>
+            <!-- <div class="carousel-item">
+                <img src="assets/images/back2.jpg" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Digital Payment Made Easier</h5>
+                    <p>Commodi nisi facilis. Nulla, debitis. Laudantium illo dolor suscipit eligendi incidunt cumque!
+                    </p>
+                </div>
+            </div>-->
+        </div>
+        <!--<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>-->
+    </div>
+    <!--<div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card col-12 col-md-6 col-lg m-lg-3">
+                    <img src="https://pbs.twimg.com/profile_images/1303645505465974785/BAedfmOT.jpg" class"hi">
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                            nibh euismod</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card col-12 col-md-6 col-lg m-lg-3">
+                    <img src="https://pbs.twimg.com/profile_images/1303645505465974785/BAedfmOT.jpg">
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                            nibh euismod</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card col-12 col-md-6 col-lg m-lg-3">
+                    <img src="https://pbs.twimg.com/profile_images/1303645505465974785/BAedfmOT.jpg">
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                            nibh euismod</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card col-12 col-md-6 col-lg m-lg-3">
+                    <img src="https://pbs.twimg.com/profile_images/1303645505465974785/BAedfmOT.jpg">
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
+                            nibh euismod</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+    <!--<div class="container-fluid">
+        <div class="row">
+            <div class="column">
+                <a href="https://getbootstrap.com/docs/5.0/utilities/shadows/">
+                    <img src="/assets/images/testicon.png">
+                </a>
+            </div>
+            <div class="column">
+                <a href="https://getbootstrap.com/docs/5.0/utilities/shadows/">
+                    <img src="/assets/images/testicon.png">
+                </a>
+            </div>
+            <div class="column">
+                <a href="https://getbootstrap.com/docs/5.0/utilities/shadows/">
+                    <img src="/assets/images/testicon.png">
+                </a>
+            </div>
+            <div class="column">
+                <a href="https://getbootstrap.com/docs/5.0/utilities/shadows/">
+                    <img src="/assets/images/testicon.png">
+                </a>
+            </div>
+        </div>
+    </div>-->
+    <!--
+    <div class="container menus">
+        <div class="row">
+            <div class="col">
+                <div class="card bg-transparent text-white col-12 col-md-6 col-lg m-lg-3">
+
+                    <div class="card-img-overlay">
+                        <h2><i class="bi bi-house-door-fill d-flex justify-content-center"></i></h2>
+                        <br><br>
+                        <h5 class="card-title d-flex justify-content-center">Home</h5>
+                        <br>
+                        <p class="textcard card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ut
+                            rerum sed quasi, facere maiores praesentium quod, eligendi voluptas culpa ducimus illum
+                            temporibus deserunt in! Nihil, velit perferendis!</p>
+                        <a href="index.html" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card bg-transparent text-white col-12 col-md-6 col-lg m-lg-3">
+
+                    <div class="card-img-overlay">
+                        <h2><i class="bi bi-briefcase-fill d-flex justify-content-center"></i></h2>
+                        <br><br>
+                        <h5 class="card-title d-flex justify-content-center">Careers</h5>
+                        <br>
+                        <p class="textcard card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente,
+                            natus eos repudiandae dolore aut pariatur repellat quia aliquam similique, exercitationem ex
+                            odio facilis. Nulla impedit saepe assumenda fugit.</p>
+                        <a href="careers.html" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card bg-transparent text-white col-12 col-md-6 col-lg m-lg-3">
+
+                    <div class="card-img-overlay">
+                        <h2><i class="bi bi-file-person-fill d-flex justify-content-center"></i></h2>
+                        <br><br>
+                        <h5 class="card-title d-flex justify-content-center">Company</h5>
+                        <br>
+                        <p class="textcard card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Molestiae iure, ipsa perferendis eius sunt rerum odit nihil in sint blanditiis accusantium
+                            eveniet earum porro temporibus, nesciunt architecto.</p>
+                        <a href="" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card bg-transparent text-white col-12 col-md-6 col-lg m-lg-3">
+
+                    <div class="card-img-overlay">
+                        <h2><i class="bi bi-arrow-down-circle-fill d-flex justify-content-center"></i></h2>
+                        <br><br>
+                        <h5 class="card-title d-flex justify-content-center">Downloads</h5>
+                        <br>
+                        <p class="textcard card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit delamo.
+                            Minima odio minus, obcaecati tulopa sapiente perspiciatis vitae, incidunt at dolore iste,
+                            sequi dicta. Ullam non architecto sit.</p>
+                        <a href="" class="stretched-link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+-->
+    <div class="product-div">
+        <img class="transition1" src="/assets/images/fog2.png" alt="">
+        <div class="product container gap-5 gap-sm-5">
+            <div class="img-col illu1">
+                <img src="assets/images/Illustrations/Illu1.png" alt="cing-mobile" class="cing-mobile">
+            </div>
+            <div class="product-text text-dark text-col">
+                <h1 class="product1-title fw-bolder">
+                    <b>Pay Without a Need of Your Device</b>
+                </h1>
+                <br>
+                <p class="fw-normal product1-paragraph">
+                    Cing mobile payment system is organized into NFC based POS payment where you can pay directly with your 
+                    mobile device in Cing integrated stores and shops
+                </p>
+                <br>
+                <!-- <button type="button" class="btn btn-outline-dark">Learn More</button> -->
+            </div>
+        </div>
+    </div>
+    <div class="team" id="team">
+        <div class="teamtl-div text-white d-flex justify-content-center">
+            <img class="transition1" src="/assets/images/fog1.png" alt="">
+            <h1 class="teamtl">Meet Our Team</h1>
+        </div>
+        <div class="teamname container-fluid">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                        alt="Cing CEO">
+                    <h2 class="">Iman Satyo Adi</h2>
+                    <h3>Co-Founder, CEO</h3>
+                </div>
+                <div class="col-lg">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                        alt="Cing CEO">
+                    <h2 class="">Dzaki Attar Farrukh</h2>
+                    <h3>Co-Founder, CEO</h3>
+                </div>
+            </div>
+            <br><br>
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                        alt="Cing CEO">
+                    <h2 class="">Rayhan Arya Ardani</h2>
+                    <h3>Chief Creative Officer</h3>
+                </div>
+                <div class="col-lg">
+                    <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                        alt="Cing CEO">
+                    <h2 class="">(Empty Position)</h2>
+                    <h3>Chief Software Engineer</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ideasc">
+        <div class="ideasc-tl d-flex justify-content-center">
+            <img class="transition1" src="/assets/images/fog3.png" alt="">
+            <h1 class="ideatl">The Idea...</h1>
+        </div>
+        <div class="ideasc-psc d-flex justify-content-center">
+            <p class="fw-normal ideasc-p d-flex justify-content-center">
+                instead of putting an entire paragraph on this section, we should put a graphic on how we would do it,
+                or how it might work, and also how you, the founder, came up with the idea of cing, with that, the user,
+                who would visit this website, can understand easier how cing might work, how your idea would make their
+                daily life easier, instead of reading an entire boring paragraph that probably noone going to bother to
+                read it anyways.
+            </p>
+        </div>
+
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+    </div>
+
+    </div>
+
+    </div>
+
+    <!-- <br><br><br><br><br><br><br><br><br><br>
+    <footer class="text-center text-white" style="background-color: #121212; display: block;">
+        <div class="container pt-4">
+            <section class="mb-4">
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="bi bi-facebook"></i></a>
+
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="bi bi-twitter"></i></a>
+
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="bi bi-google"></i></a>
+
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="bi bi-instagram"></i></a>
+
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="bi bi-linkedin"></i></a>
+
+                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                    data-mdb-ripple-color="dark"><i class="bi bi-github"></i></a>
+            </section>
+        </div>
+
+        <div class="text-center text-dark p-3" style="background-color: #121212">
+            © 2021 Copyright:
+            <a class="text-dark" href="index.html">Vee.com</a>
+        </div>
+    </footer>
+-->
+</body>
+
+</html>
