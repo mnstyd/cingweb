@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=\], initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bootstrap.css">
     <link rel="stylesheet" href="bootstrap.bundle.js">
     <link rel="stylesheet" href="jquery.js">
@@ -28,7 +29,7 @@
 
     <style>
         body {
-            background-color: khaki;
+            background-image: linear-gradient(#E8EBFF, #283DCC);
         }
 
         .navbar-brand {
@@ -77,6 +78,26 @@
 
         .navbar-nav .nav-link:hover::after {
             width: 100%;
+        }
+
+        .register-button {
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: #23272A;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-left: 10px;
+            border: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .register-button:hover {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .register-button:focus {
+            outline: none;
         }
 
         @media screen and (min-width:992px) {
@@ -159,10 +180,6 @@
             display: inline;
         }
 
-        .gimana {
-            width: 200px;
-        }
-
         .sc {
             padding-left: 40px;
             padding-right: 40px;
@@ -237,16 +254,12 @@
             text-align: center;
         }
 
-        .bi-award-fill:hover {
-            color: #FFD700;
-        }
-
         .menus {
             height: 500px;
         }
 
         .product-div {
-            background-color: #E8EBFF;
+            background-color: #D6DBF8;
         }
 
         .product {
@@ -268,6 +281,12 @@
 
         .illu1:hover {
             transform: scale(1.05);
+        }
+
+        .product-text-2 {
+            max-width: 450px;
+            font-style: bold;
+            text-align: right;
         }
 
         .cing-mobile {
@@ -476,6 +495,11 @@
                         DOWNLOADS
                     </a>
                 </li>
+                <li class="nav-item">
+                    <button class="register-button" type="button">
+                        REGISTER
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
@@ -506,136 +530,7 @@
             <span class="visually-hidden">Next</span>
         </button>-->
     </div>
-    <!--<div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="card col-12 col-md-6 col-lg m-lg-3">
-                    <img src="https://pbs.twimg.com/profile_images/1303645505465974785/BAedfmOT.jpg" class"hi">
-                    <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                            nibh euismod</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card col-12 col-md-6 col-lg m-lg-3">
-                    <img src="https://pbs.twimg.com/profile_images/1303645505465974785/BAedfmOT.jpg">
-                    <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                            nibh euismod</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card col-12 col-md-6 col-lg m-lg-3">
-                    <img src="https://pbs.twimg.com/profile_images/1303645505465974785/BAedfmOT.jpg">
-                    <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                            nibh euismod</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card col-12 col-md-6 col-lg m-lg-3">
-                    <img src="https://pbs.twimg.com/profile_images/1303645505465974785/BAedfmOT.jpg">
-                    <div class="card-body">
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy
-                            nibh euismod</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
-    <!--<div class="container-fluid">
-        <div class="row">
-            <div class="column">
-                <a href="https://getbootstrap.com/docs/5.0/utilities/shadows/">
-                    <img src="/assets/images/testicon.png">
-                </a>
-            </div>
-            <div class="column">
-                <a href="https://getbootstrap.com/docs/5.0/utilities/shadows/">
-                    <img src="/assets/images/testicon.png">
-                </a>
-            </div>
-            <div class="column">
-                <a href="https://getbootstrap.com/docs/5.0/utilities/shadows/">
-                    <img src="/assets/images/testicon.png">
-                </a>
-            </div>
-            <div class="column">
-                <a href="https://getbootstrap.com/docs/5.0/utilities/shadows/">
-                    <img src="/assets/images/testicon.png">
-                </a>
-            </div>
-        </div>
-    </div>-->
-    <!--
-    <div class="container menus">
-        <div class="row">
-            <div class="col">
-                <div class="card bg-transparent text-white col-12 col-md-6 col-lg m-lg-3">
 
-                    <div class="card-img-overlay">
-                        <h2><i class="bi bi-house-door-fill d-flex justify-content-center"></i></h2>
-                        <br><br>
-                        <h5 class="card-title d-flex justify-content-center">Home</h5>
-                        <br>
-                        <p class="textcard card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum ut
-                            rerum sed quasi, facere maiores praesentium quod, eligendi voluptas culpa ducimus illum
-                            temporibus deserunt in! Nihil, velit perferendis!</p>
-                        <a href="index.html" class="stretched-link"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card bg-transparent text-white col-12 col-md-6 col-lg m-lg-3">
-
-                    <div class="card-img-overlay">
-                        <h2><i class="bi bi-briefcase-fill d-flex justify-content-center"></i></h2>
-                        <br><br>
-                        <h5 class="card-title d-flex justify-content-center">Careers</h5>
-                        <br>
-                        <p class="textcard card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente,
-                            natus eos repudiandae dolore aut pariatur repellat quia aliquam similique, exercitationem ex
-                            odio facilis. Nulla impedit saepe assumenda fugit.</p>
-                        <a href="careers.html" class="stretched-link"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card bg-transparent text-white col-12 col-md-6 col-lg m-lg-3">
-
-                    <div class="card-img-overlay">
-                        <h2><i class="bi bi-file-person-fill d-flex justify-content-center"></i></h2>
-                        <br><br>
-                        <h5 class="card-title d-flex justify-content-center">Company</h5>
-                        <br>
-                        <p class="textcard card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Molestiae iure, ipsa perferendis eius sunt rerum odit nihil in sint blanditiis accusantium
-                            eveniet earum porro temporibus, nesciunt architecto.</p>
-                        <a href="" class="stretched-link"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card bg-transparent text-white col-12 col-md-6 col-lg m-lg-3">
-
-                    <div class="card-img-overlay">
-                        <h2><i class="bi bi-arrow-down-circle-fill d-flex justify-content-center"></i></h2>
-                        <br><br>
-                        <h5 class="card-title d-flex justify-content-center">Downloads</h5>
-                        <br>
-                        <p class="textcard card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit delamo.
-                            Minima odio minus, obcaecati tulopa sapiente perspiciatis vitae, incidunt at dolore iste,
-                            sequi dicta. Ullam non architecto sit.</p>
-                        <a href="" class="stretched-link"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
--->
     <div class="product-div">
         <img class="transition1" src="/assets/images/fog2.png" alt="">
         <div class="product container gap-5 gap-sm-5">
@@ -644,16 +539,32 @@
             </div>
             <div class="product-text text-dark text-col">
                 <h1 class="product1-title fw-bolder">
-                    <b>Pay Without a Need of Your Device</b>
+                    <b>Pay Without The Need of Your Device</b>
                 </h1>
                 <br>
                 <p class="fw-normal product1-paragraph">
-                    Cing mobile payment system is organized into NFC based POS payment where you can pay directly with your 
-                    mobile device in Cing integrated stores and shops
+                    Unlock seamless transactions with just a touch on Cing. Enjoy effortless payments for all your needs without the need for your device.
                 </p>
                 <br>
                 <!-- <button type="button" class="btn btn-outline-dark">Learn More</button> -->
             </div>
+        </div>
+        <br><br>
+        <div class="product container gap-5 gap-sm-5">
+            <div class="product-text-2 text-dark text-col">
+                <h1 class="product1-title fw-bolder">
+                    <b>Feast on your favorites with just a touch with Cing</b>
+                </h1>
+                <br>
+                <p class="fw-normal product1-paragraph">
+                    Savor your favorites anywhere, anytime with Cing. Indulge hassle-free and explore culinary convenience on our platform.
+                </p>
+                <!-- <button type="button" class="btn btn-outline-dark">Learn More</button> -->
+            </div>
+            <div class="img-col illu1">
+                <img src="assets/images/Illustrations/illu2.png" alt="cing-mobile" class="cing-mobile">
+            </div>
+            <br>
         </div>
     </div>
     <div class="team" id="team">
@@ -696,15 +607,11 @@
     <div class="ideasc">
         <div class="ideasc-tl d-flex justify-content-center">
             <img class="transition1" src="/assets/images/fog3.png" alt="">
-            <h1 class="ideatl">The Idea...</h1>
+            <h1 class="ideatl"> </h1>
         </div>
         <div class="ideasc-psc d-flex justify-content-center">
             <p class="fw-normal ideasc-p d-flex justify-content-center">
-                instead of putting an entire paragraph on this section, we should put a graphic on how we would do it,
-                or how it might work, and also how you, the founder, came up with the idea of cing, with that, the user,
-                who would visit this website, can understand easier how cing might work, how your idea would make their
-                daily life easier, instead of reading an entire boring paragraph that probably noone going to bother to
-                read it anyways.
+                
             </p>
         </div>
 
@@ -717,37 +624,6 @@
     </div>
 
     </div>
-
-    <!-- <br><br><br><br><br><br><br><br><br><br>
-    <footer class="text-center text-white" style="background-color: #121212; display: block;">
-        <div class="container pt-4">
-            <section class="mb-4">
-                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-                    data-mdb-ripple-color="dark"><i class="bi bi-facebook"></i></a>
-
-                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-                    data-mdb-ripple-color="dark"><i class="bi bi-twitter"></i></a>
-
-                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-                    data-mdb-ripple-color="dark"><i class="bi bi-google"></i></a>
-
-                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-                    data-mdb-ripple-color="dark"><i class="bi bi-instagram"></i></a>
-
-                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-                    data-mdb-ripple-color="dark"><i class="bi bi-linkedin"></i></a>
-
-                <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
-                    data-mdb-ripple-color="dark"><i class="bi bi-github"></i></a>
-            </section>
-        </div>
-
-        <div class="text-center text-dark p-3" style="background-color: #121212">
-            © 2021 Copyright:
-            <a class="text-dark" href="index.html">Vee.com</a>
-        </div>
-    </footer>
--->
 </body>
 
 </html>
