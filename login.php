@@ -1,30 +1,41 @@
 <?php
-    // Connect to the MySQL server
-    $db = new mysqli("hostname", "username", "password", "mydb");
-    // Check if the form is submitted
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        // Sanitize the inputs
-        $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
-        $password = filter_var($_POST["password"], FILTER_SANITIZE_STRING);
+// Connect to the MySQL server
+$db = new mysqli("hostname", "username", "password", "mydb");
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
 
-        //Validate the email address
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            echo "Invalid Email Address";
-            die();
-        }
-        // get the user data from the database
-        $stmt = $db->prepare("SELECT * FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
+
+    if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Invalid email address";
+        exit();
+    }
+
+    $stmt = $db->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
-        //verify the password
-        if(password_verify($password, $user["password"])) {
+        // Verify the password
+        if (password_verify($password, $user["password"])) {
             // Redirect the user to the main page
             header("Location: main.html");
+            exit();
         } else {
-            echo 'Invalid Credentials';
+            echo 'Invalid credentials';
         }
-        $stmt->close();
+    } else {
+        echo 'User not found';
     }
+
+    $stmt->close();
+}
+
+$db->close();
 ?>
