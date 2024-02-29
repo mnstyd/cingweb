@@ -409,21 +409,6 @@
             padding-top: 11%;
         }
 
-        #snakeGame {
-            width: 400px;
-            height: 400px;
-            border: 1px solid black;
-            margin: 0 auto;
-            position: relative;
-        }
-        #score {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-
-
-
         /*.bi-command:hover {
             color: #fe828c;
         }
@@ -477,129 +462,106 @@
 
     //
 
-    const snakeGame = document.getElementById("snakeGame");
-    const scoreValue = document.getElementById("scoreValue");
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
 
-    const canvas = document.createElement("canvas");
-    canvas.width = 400;
-    canvas.height = 400;
-    const ctx = canvas.getContext("2d");
+    const ball = {
+        x: canvas.width / 2,
+        y: canvas.height / 2,
+        radius: 10,
+        dx: 2,
+        dy: -2
+    };
 
-    snakeGame.appendChild(canvas);
+    const paddleHeight = 75;
+    const paddleWidth = 10;
+    let paddleLeftY = (canvas.height - paddleHeight) / 2;
+    let paddleRightY = (canvas.height - paddleHeight) / 2;
+    const paddleSpeed = 5;
 
-    // Snake game variables
-    let snake = [{ x: 200, y: 200 }];
-    let food = { x: 0, y: 0 };
-    let dx = 0;
-    let dy = 0;
-    let score = 0;
-    let isGameOver = false;
+    let upPressed = false;
+    let downPressed = false;
 
-    // Set up keyboard event listeners
-    document.addEventListener("keydown", handleKeyPress);
+    document.addEventListener('keydown', keyDownHandler);
+    document.addEventListener('keyup', keyUpHandler);
 
-    // Start the game
-    main();
-
-    function main() {
-        if (isGameOver) {
-            alert("Game over! Your score: " + score);
-            return;
-        }
-
-        clearCanvas();
-        moveSnake();
-        drawSnake();
-        drawFood();
-        checkCollision();
-        updateScore();
-
-        setTimeout(main, 100); // Game loop
-    }
-
-    function clearCanvas() {
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
-    function moveSnake() {
-        const head = { x: snake[0].x + dx, y: snake[0].y + dy };
-        snake.unshift(head);
-
-        // Check if the snake eats the food
-        if (head.x === food.x && head.y === food.y) {
-            score++;
-            generateFood();
-        } else {
-            snake.pop(); // Remove the tail
+    function keyDownHandler(e) {
+        if (e.key === 'Up' || e.key === 'ArrowUp') {
+            upPressed = true;
+        } else if (e.key === 'Down' || e.key === 'ArrowDown') {
+            downPressed = true;
         }
     }
 
-    function drawSnake() {
-        ctx.fillStyle = "green";
-        snake.forEach((segment) => {
-            ctx.fillRect(segment.x, segment.y, 10, 10);
-        });
-    }
-
-    function drawFood() {
-        ctx.fillStyle = "red";
-        ctx.fillRect(food.x, food.y, 10, 10);
-    }
-
-    function generateFood() {
-        const x = Math.floor(Math.random() * 40) * 10;
-        const y = Math.floor(Math.random() * 40) * 10;
-        food = { x, y };
-    }
-
-    function handleKeyPress(event) {
-        const key = event.key;
-        switch (key) {
-            case "ArrowUp":
-                if (dy !== 10) {
-                    dx = 0;
-                    dy = -10;
-                }
-                break;
-            case "ArrowDown":
-                if (dy !== -10) {
-                    dx = 0;
-                    dy = 10;
-                }
-                break;
-            case "ArrowLeft":
-                if (dx !== 10) {
-                    dx = -10;
-                    dy = 0;
-                }
-                break;
-            case "ArrowRight":
-                if (dx !== -10) {
-                    dx = 10;
-                    dy = 0;
-                }
-                break;
+    function keyUpHandler(e) {
+        if (e.key === 'Up' || e.key === 'ArrowUp') {
+            upPressed = false;
+        } else if (e.key === 'Down' || e.key === 'ArrowDown') {
+            downPressed = false;
         }
     }
 
-    function checkCollision() {
-        // Check if the snake collides with itself or with the walls
-        const head = snake[0];
-        if (
-            head.x < 0 ||
-            head.x >= canvas.width ||
-            head.y < 0 ||
-            head.y >= canvas.height ||
-            snake.slice(1).some((segment) => segment.x === head.x && segment.y === head.y)
-        ) {
-            isGameOver = true;
+    function drawBall() {
+        ctx.beginPath();
+        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'black';
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    function drawPaddle(x, y) {
+        ctx.beginPath();
+        ctx.rect(x, y, paddleWidth, paddleHeight);
+        ctx.fillStyle = 'black';
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawBall();
+        drawPaddle(0, paddleLeftY);
+        drawPaddle(canvas.width - paddleWidth, paddleRightY);
+
+        if (ball.y + ball.dy > canvas.height - ball.radius || ball.y + ball.dy < ball.radius) {
+            ball.dy = -ball.dy;
+        }
+
+        if (ball.x + ball.dx > canvas.width - ball.radius) {
+            if (ball.y > paddleRightY && ball.y < paddleRightY + paddleHeight) {
+                ball.dx = -ball.dx;
+            } else {
+                // Player 1 scores
+                resetBall();
+            }
+        }
+
+        if (ball.x + ball.dx < ball.radius + paddleWidth) {
+            if (ball.y > paddleLeftY && ball.y < paddleLeftY + paddleHeight) {
+                ball.dx = -ball.dx;
+            } else {
+                // Player 2 scores
+                resetBall();
+            }
+        }
+
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+
+        if (upPressed && paddleLeftY > 0) {
+            paddleLeftY -= paddleSpeed;
+        } else if (downPressed && paddleLeftY < canvas.height - paddleHeight) {
+            paddleLeftY += paddleSpeed;
         }
     }
 
-    function updateScore() {
-        scoreValue.textContent = score;
+    function resetBall() {
+        ball.x = canvas.width / 2;
+        ball.y = canvas.height / 2;
+        ball.dx = -ball.dx;
     }
+
+    setInterval(draw, 10);
 
 </script>
 
@@ -756,8 +718,9 @@
         </div>
 
         <br><br><br><br>
-        <div id="snakeGame"></div>
-    <div id="score">Score: <span id="scoreValue">0</span></div>
+        <div id="pongGame" style="position: relative; margin: auto; width: 600px;">
+            <canvas id="canvas" width="600" height="400" style="border:1px solid black;"></canvas>
+        </div>
         <br><br><br><br>
         <br><br><br><br>
         <br><br><br><br>
