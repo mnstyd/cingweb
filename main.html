@@ -475,16 +475,19 @@
 
     ScrollReveal().reveal('.team', { delay: 500 });
 
+    //
+
     const snakeGame = document.getElementById("snakeGame");
     const scoreValue = document.getElementById("scoreValue");
 
     const canvas = document.createElement("canvas");
     canvas.width = 400;
     canvas.height = 400;
-    snakeGame.appendChild(canvas);
-
     const ctx = canvas.getContext("2d");
 
+    snakeGame.appendChild(canvas);
+
+    // Snake game variables
     let snake = [{ x: 200, y: 200 }];
     let food = { x: 0, y: 0 };
     let dx = 0;
@@ -492,6 +495,7 @@
     let score = 0;
     let isGameOver = false;
 
+    // Set up keyboard event listeners
     document.addEventListener("keydown", handleKeyPress);
 
     // Start the game
@@ -533,7 +537,7 @@
 
     function drawSnake() {
         ctx.fillStyle = "green";
-        snake.forEach(segment => {
+        snake.forEach((segment) => {
             ctx.fillRect(segment.x, segment.y, 10, 10);
         });
     }
@@ -583,9 +587,11 @@
         // Check if the snake collides with itself or with the walls
         const head = snake[0];
         if (
-            head.x < 0 || head.x >= canvas.width ||
-            head.y < 0 || head.y >= canvas.height ||
-            snake.slice(1).some(segment => segment.x === head.x && segment.y === head.y)
+            head.x < 0 ||
+            head.x >= canvas.width ||
+            head.y < 0 ||
+            head.y >= canvas.height ||
+            snake.slice(1).some((segment) => segment.x === head.x && segment.y === head.y)
         ) {
             isGameOver = true;
         }
