@@ -462,107 +462,6 @@
 
     //
 
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-
-    const ball = {
-        x: canvas.width / 2,
-        y: canvas.height / 2,
-        radius: 10,
-        dx: 2,
-        dy: -2
-    };
-
-    const paddleHeight = 75;
-    const paddleWidth = 10;
-    let paddleLeftY = (canvas.height - paddleHeight) / 2;
-    let paddleRightY = (canvas.height - paddleHeight) / 2;
-    const paddleSpeed = 5;
-
-    let upPressed = false;
-    let downPressed = false;
-
-    document.addEventListener('keydown', keyDownHandler);
-    document.addEventListener('keyup', keyUpHandler);
-
-    function keyDownHandler(e) {
-        if (e.key === 'Up' || e.key === 'ArrowUp') {
-            upPressed = true;
-        } else if (e.key === 'Down' || e.key === 'ArrowDown') {
-            downPressed = true;
-        }
-    }
-
-    function keyUpHandler(e) {
-        if (e.key === 'Up' || e.key === 'ArrowUp') {
-            upPressed = false;
-        } else if (e.key === 'Down' || e.key === 'ArrowDown') {
-            downPressed = false;
-        }
-    }
-
-    function drawBall() {
-        ctx.beginPath();
-        ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'black';
-        ctx.fill();
-        ctx.closePath();
-    }
-
-    function drawPaddle(x, y) {
-        ctx.beginPath();
-        ctx.rect(x, y, paddleWidth, paddleHeight);
-        ctx.fillStyle = 'black';
-        ctx.fill();
-        ctx.closePath();
-    }
-
-    function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        drawBall();
-        drawPaddle(0, paddleLeftY);
-        drawPaddle(canvas.width - paddleWidth, paddleRightY);
-
-        if (ball.y + ball.dy > canvas.height - ball.radius || ball.y + ball.dy < ball.radius) {
-            ball.dy = -ball.dy;
-        }
-
-        if (ball.x + ball.dx > canvas.width - ball.radius) {
-            if (ball.y > paddleRightY && ball.y < paddleRightY + paddleHeight) {
-                ball.dx = -ball.dx;
-            } else {
-                // Player 1 scores
-                resetBall();
-            }
-        }
-
-        if (ball.x + ball.dx < ball.radius + paddleWidth) {
-            if (ball.y > paddleLeftY && ball.y < paddleLeftY + paddleHeight) {
-                ball.dx = -ball.dx;
-            } else {
-                // Player 2 scores
-                resetBall();
-            }
-        }
-
-        ball.x += ball.dx;
-        ball.y += ball.dy;
-
-        if (upPressed && paddleLeftY > 0) {
-            paddleLeftY -= paddleSpeed;
-        } else if (downPressed && paddleLeftY < canvas.height - paddleHeight) {
-            paddleLeftY += paddleSpeed;
-        }
-    }
-
-    function resetBall() {
-        ball.x = canvas.width / 2;
-        ball.y = canvas.height / 2;
-        ball.dx = -ball.dx;
-    }
-
-    setInterval(draw, 10);
-
 </script>
 
 <body>
@@ -718,9 +617,6 @@
         </div>
 
         <br><br><br><br>
-        <div id="pongGame" style="position: relative; margin: auto; width: 600px;">
-            <canvas id="canvas" width="600" height="400" style="border:1px solid black;"></canvas>
-        </div>
         <br><br><br><br>
         <br><br><br><br>
         <br><br><br><br>
