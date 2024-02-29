@@ -1,41 +1,48 @@
 <?php
-// Connect to the MySQL server
-$db = new mysqli("hostname", "username", "password", "mydb");
-if ($db->connect_error) {
-    die("Connection failed: " . $db->connect_error);
+// Connect to the database
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "cingdata";
+$conn = new mysqli($servername, $username, $password, $dbname);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
-    $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
+// Get the data from the form
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-    if (!$email || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Invalid email address";
+// Validate the data
+if (empty($email) || empty($password)) {
+    echo "Please fill out all fields";
+    exit();
+}
+
+// Prepare and bind the statement to prevent SQL injection
+$stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+$stmt->bind_param("s", $email);
+
+// Execute the statement
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Check if user exists
+if ($result->num_rows === 1) {
+    $user = $result->fetch_assoc();
+    // Verify the password
+    if (password_verify($password, $user["password"])) {
+        // Redirect to the main page or any other page
+        header("Location: main.html");
         exit();
-    }
-
-    $stmt = $db->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows === 1) {
-        $user = $result->fetch_assoc();
-        // Verify the password
-        if (password_verify($password, $user["password"])) {
-            // Redirect the user to the main page
-            header("Location: main.html");
-            exit();
-        } else {
-            echo 'Invalid credentials';
-        }
     } else {
-        echo 'User not found';
+        echo 'Invalid credentials';
     }
-
-    $stmt->close();
+} else {
+    echo 'User not found';
 }
 
-$db->close();
+// Close the statement and connection
+$stmt->close();
+$conn->close();
 ?>
