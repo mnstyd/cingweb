@@ -286,9 +286,19 @@ body {
 .product1-title {
     font-size: 300%;
     font-family: 'ClashDisplay-Bold';
+    max-width: 90%;
 }
 
 .product1-paragraph {
+    font-family: 'ClashDisplay-Medium';
+}
+
+.product2-title {
+    font-size: 300%;
+    font-family: 'ClashDisplay-Bold';
+}
+
+.product2-paragraph {
     font-family: 'ClashDisplay-Medium';
 }
 
@@ -401,3 +411,14 @@ body {
     display: inline;
     margin-bottom: -7%;
 }
+
+/*.bi-command:hover {
+    color: #fe828c;
+}
+.bi-github:hover {
+    color: #fe828c;
+}
+
+.bi-envelope-fill:hover {
+    color: #fe828c;
+}*/
