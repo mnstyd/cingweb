@@ -194,8 +194,8 @@ body {
 }
 
 /* .container-fluid {
-    max-width: 1200px;
-}*/
+            max-width: 1200px;
+        }*/
 
 #carouselExampleIndicators {
     max-width: 400px;
@@ -411,14 +411,3 @@ body {
     display: inline;
     margin-bottom: -7%;
 }
-
-/*.bi-command:hover {
-    color: #fe828c;
-}
-.bi-github:hover {
-    color: #fe828c;
-}
-
-.bi-envelope-fill:hover {
-    color: #fe828c;
-}*/
